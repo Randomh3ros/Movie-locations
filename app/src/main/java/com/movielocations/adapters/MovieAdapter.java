@@ -75,7 +75,17 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             titleTextView.setText(movie.getTitle());
             yearTextView.setText(String.valueOf(movie.getYear()));
             languageTextView.setText(movie.getLanguage());
-            // TODO: Load poster image using Glide
+            
+            // Load poster image with Glide
+            if (movie.getPosterUrl() != null && !movie.getPosterUrl().isEmpty()) {
+                com.bumptech.glide.Glide.with(itemView.getContext())
+                    .load(movie.getPosterUrl())
+                    .placeholder(android.R.drawable.ic_menu_gallery)
+                    .error(android.R.drawable.ic_menu_gallery)
+                    .into(posterImageView);
+            } else {
+                posterImageView.setImageResource(android.R.drawable.ic_menu_gallery);
+            }
         }
     }
 }

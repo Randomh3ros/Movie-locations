@@ -103,7 +103,17 @@ public class MovieDetailActivity extends AppCompatActivity implements LocationAd
                     yearTextView.setText(String.valueOf(currentMovie.getYear()));
                     languageTextView.setText(currentMovie.getLanguage());
                     descriptionTextView.setText(currentMovie.getDescription());
-                    // TODO: Load poster image
+                    
+                    // Load poster image with Glide
+                    if (currentMovie.getPosterUrl() != null && !currentMovie.getPosterUrl().isEmpty()) {
+                        com.bumptech.glide.Glide.with(MovieDetailActivity.this)
+                            .load(currentMovie.getPosterUrl())
+                            .placeholder(android.R.drawable.ic_menu_gallery)
+                            .error(android.R.drawable.ic_menu_gallery)
+                            .into(posterImageView);
+                    } else {
+                        posterImageView.setImageResource(android.R.drawable.ic_menu_gallery);
+                    }
                 }
 
                 if (locations != null && !locations.isEmpty()) {

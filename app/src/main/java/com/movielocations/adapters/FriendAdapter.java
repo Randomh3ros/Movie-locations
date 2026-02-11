@@ -72,7 +72,18 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
         public void bind(Friend friend) {
             nameTextView.setText(friend.getName());
             emailTextView.setText(friend.getEmail());
-            // TODO: Load profile image using Glide
+            
+            // Load profile image with Glide
+            if (friend.getProfilePictureUrl() != null && !friend.getProfilePictureUrl().isEmpty()) {
+                com.bumptech.glide.Glide.with(itemView.getContext())
+                    .load(friend.getProfilePictureUrl())
+                    .placeholder(android.R.drawable.ic_menu_report_image)
+                    .error(android.R.drawable.ic_menu_report_image)
+                    .circleCrop()
+                    .into(profileImageView);
+            } else {
+                profileImageView.setImageResource(android.R.drawable.ic_menu_report_image);
+            }
         }
     }
 }

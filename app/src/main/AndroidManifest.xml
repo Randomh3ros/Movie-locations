@@ -17,7 +17,10 @@
         android:theme="@style/Theme.MovieLocations"
         tools:targetApi="31">
         
-        <!-- Google Maps API Key -->
+        <!-- Google Maps API Key 
+             WARNING: Replace YOUR_GOOGLE_MAPS_API_KEY_HERE with your actual API key
+             See SETUP.md for instructions on obtaining and configuring your API key
+             NEVER commit your actual API key to version control -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="YOUR_GOOGLE_MAPS_API_KEY_HERE" />

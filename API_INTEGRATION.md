@@ -211,7 +211,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MovieRepository {
-    private static final String TMDB_API_KEY = "YOUR_TMDB_API_KEY_HERE";
+    // SECURE: Use BuildConfig to access API key from local.properties
+    private static final String TMDB_API_KEY = BuildConfig.TMDB_API_KEY;
     private TMDbApiService apiService;
     private AppDatabase database;
     private ExecutorService executorService;
@@ -269,7 +270,9 @@ public class MovieRepository {
 
 ### Step 6: Store API Key Securely
 
-Add to `local.properties` (not committed to git):
+**IMPORTANT: Never commit API keys to version control!**
+
+Add to `local.properties` (already in .gitignore):
 ```properties
 tmdb.api.key=your_actual_api_key_here
 ```
@@ -286,8 +289,12 @@ android {
 }
 ```
 
-Use in code:
+Use in code (instead of hardcoding):
 ```java
+// DO NOT DO THIS:
+// private static final String TMDB_API_KEY = "abc123xyz";
+
+// DO THIS INSTEAD:
 private static final String TMDB_API_KEY = BuildConfig.TMDB_API_KEY;
 ```
 

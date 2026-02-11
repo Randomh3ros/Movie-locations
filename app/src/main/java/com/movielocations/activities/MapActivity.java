@@ -149,8 +149,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 List<com.movielocations.models.Location> locations = database.locationDao().getAllLocations();
                 for (com.movielocations.models.Location location : locations) {
                     LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-                    if (marker.getPosition().latitude == latLng.latitude 
-                            && marker.getPosition().longitude == latLng.longitude) {
+                    double epsilon = 0.0001; // Tolerance for floating-point comparison
+                    if (Math.abs(marker.getPosition().latitude - latLng.latitude) < epsilon
+                            && Math.abs(marker.getPosition().longitude - latLng.longitude) < epsilon) {
                         runOnUiThread(() -> showLocationInfo(location));
                         break;
                     }

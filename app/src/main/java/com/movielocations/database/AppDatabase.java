@@ -24,7 +24,9 @@ public abstract class AppDatabase extends RoomDatabase {
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(),
                     AppDatabase.class, "movie_locations_database")
-                    .fallbackToDestructiveMigration()
+                    .fallbackToDestructiveMigration() // WARNING: This deletes all data on schema changes
+                    // For production, implement proper migrations instead:
+                    // .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
                     .build();
         }
         return instance;

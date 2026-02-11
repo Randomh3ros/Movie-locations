@@ -90,7 +90,7 @@ public class FriendsActivity extends AppCompatActivity implements FriendAdapter.
                     if (!name.isEmpty() && !email.isEmpty()) {
                         addFriend(name, email, phone);
                     } else {
-                        Toast.makeText(this, "Name and email are required", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, R.string.name_email_required, Toast.LENGTH_SHORT).show();
                     }
                 })
                 .setNegativeButton("Cancel", null)
@@ -183,7 +183,7 @@ public class FriendsActivity extends AppCompatActivity implements FriendAdapter.
         executorService.execute(() -> {
             database.friendDao().delete(friend);
             runOnUiThread(() -> {
-                Toast.makeText(this, "Friend removed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.friend_removed, Toast.LENGTH_SHORT).show();
                 loadFriends();
             });
         });

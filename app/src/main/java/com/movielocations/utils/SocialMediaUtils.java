@@ -78,7 +78,9 @@ public class SocialMediaUtils {
         try {
             context.startActivity(intent);
         } catch (Exception e) {
-            e.printStackTrace();
+            android.util.Log.e("SocialMediaUtils", "Failed to send invitation email", e);
+            android.widget.Toast.makeText(context, "Unable to send invitation. Please check email settings.", 
+                android.widget.Toast.LENGTH_SHORT).show();
         }
     }
 }

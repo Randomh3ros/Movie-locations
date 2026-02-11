@@ -32,4 +32,6 @@
     <string name="error_loading_data">Error loading data</string>
     <string name="friend_added">Friend added successfully</string>
     <string name="invitation_sent">Invitation sent</string>
+    <string name="name_email_required">Name and email are required</string>
+    <string name="friend_removed">Friend removed</string>
 </resources>
